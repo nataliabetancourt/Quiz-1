@@ -4,11 +4,11 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PFont;
 
-public abstract class Shape {
+public class Shape {
 	
 	protected PApplet app;
 	protected String shapes;
-	protected int size, posX, posY, direction, value;
+	protected int size, posX, posY, dir1, dir2, value, speed;
 	protected int r, g, b;
 	
 	public Shape(PApplet app, String shapes) {
@@ -19,6 +19,9 @@ public abstract class Shape {
 		r = (int) (Math.random()*255+50);
 		b = (int) (Math.random()*255+50);
 		g = (int) (Math.random()*255+50);
+		
+		//Random speed for the shapes
+		speed = (int)(Math.random()*4+1);
 	}
 	
 	protected void separateVariables() {
@@ -35,7 +38,16 @@ public abstract class Shape {
 	}
 	
 	public void move() {
+		posX += (speed * dir1);
+		posY += (speed * dir2);
 		
+		if (posX < 0 || posX > 600) {
+			dir1 = dir1*(-1);
+		}
+		
+		if (posY < 0 || posY > 600) {
+			dir2 = dir2*(-1);
+		}
 	}
 	
 }

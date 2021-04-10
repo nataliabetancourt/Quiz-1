@@ -23,7 +23,8 @@ public class Circle extends Shape{
 			size = Integer.parseInt(circleVariables[1]);
 			posX = Integer.parseInt(circleVariables[2]);
 			posY = Integer.parseInt(circleVariables[3]);
-			direction = Integer.parseInt(circleVariables[4]);
+			dir1 = Integer.parseInt(circleVariables[4]);
+			dir2 = Integer.parseInt(circleVariables[4]);
 			value = Integer.parseInt(circleVariables[5]);
 		}
 	}
@@ -37,6 +38,7 @@ public class Circle extends Shape{
 	}
 	
 	public void move() {
+		super.move();
 		
 	}
 

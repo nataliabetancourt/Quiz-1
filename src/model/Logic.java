@@ -43,10 +43,12 @@ public class Logic {
 	public void draw() {
 		for (int i = 0; i < squareList.size(); i++) {
 			squareList.get(i).draw();
+			squareList.get(i).move();
 		}
 		
 		for (int i = 0; i < circleList.size(); i++) {
 			circleList.get(i).draw();
+			circleList.get(i).move();
 		}
 
 	}

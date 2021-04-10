@@ -23,7 +23,8 @@ public class Square extends Shape{
 			size = Integer.parseInt(squareVariables[1]);
 			posX = Integer.parseInt(squareVariables[2]);
 			posY = Integer.parseInt(squareVariables[3]);
-			direction = Integer.parseInt(squareVariables[4]);
+			dir1 = Integer.parseInt(squareVariables[4]);
+			dir2 = Integer.parseInt(squareVariables[4]);
 			value = Integer.parseInt(squareVariables[5]);
 		}
 	}
@@ -37,6 +38,7 @@ public class Square extends Shape{
 	}
 	
 	public void move() {
+		super.move();
 		
 	}
 

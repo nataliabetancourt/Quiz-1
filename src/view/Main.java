@@ -8,6 +8,7 @@ public class Main extends PApplet{
 		PApplet.main("view.Main");
 	}
 	
+	MainController controller;
 	
 	@Override
 	public void settings() {
@@ -17,12 +18,15 @@ public class Main extends PApplet{
 	
 	@Override
 	public void setup() {
-	
+		
+		controller = new MainController(this);
 	}
 	
 	@Override
 	public void draw() {
 		background(255);
+		
+		controller.draw();
 		
 		
 	}

@@ -1,8 +1,10 @@
 package model;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 public class Logic {
 	
@@ -63,11 +65,34 @@ public class Logic {
 		distShapes();
 	}
 	
-	public void stopMove() {
-		
-		
-		
-
+	public void stopMoveCircle() {
+			for (int j = 0; j < circleList.size(); j++) {
+					//Mouse clicked (left) on circle, it makes it the circles stop
+					if (distance(app.mouseX, circleList.get(j).getPosX(), app.mouseY, circleList.get(j).getPosY())<circleList.get(j).getSize()) {
+						circleList.get(j).setStopMove(!circleList.get(j).isStopMove());
+					}
+			}
+	}
+	
+	public void stopMoveSquare() {
+			for (int i = 0; i < squareList.size(); i++) {
+				//Mouse clicked (left) on square, it makes it stop
+				if (app.mouseX > squareList.get(i).getPosX()-squareList.get(i).getSize() && 
+						app.mouseX < squareList.get(i).getPosX()+squareList.get(i).getSize() &&
+						app.mouseY > squareList.get(i).getPosY()-squareList.get(i).getSize() &&
+						app.mouseY < squareList.get(i).getPosY()+squareList.get(i).getSize()) {
+					squareList.get(i).setStopMove(!squareList.get(i).isStopMove());
+				}
+			}
+	}
+	
+	public void stopMoveTriangle() {
+		for (int i = 0; i < triangleList.size(); i++) {
+			//Mouse clicked (left) on triangle, it makes it stop
+			if (distance(app.mouseX, triangleList.get(i).getPosX(), app.mouseY, triangleList.get(i).getPosY())<triangleList.get(i).getSides()-10) {
+				triangleList.get(i).setStopMove(!triangleList.get(i).isStopMove());
+			}		
+		}
 	}
 	
 	private void distShapes() {
@@ -80,7 +105,7 @@ public class Logic {
 																			squareList.get(i).getPosY(), circleList.get(j).getPosY());
 						
 					//Crash between a square and a circle
-					if (distanceSandC < 50) {
+					if (distanceSandC < circleList.get(j).getSize()) {
 						//Addition of both of the values that crashed
 						int valueTriangle = additionValues(squareList.get(i).getValue(), circleList.get(j).getValue());
 						//Adding triangle as a result of the crash
@@ -102,7 +127,6 @@ public class Logic {
 						if (distanceTandT < 50 && crash == true) {
 							//Addition of both of the values of the crash
 							int valueTriangle2 = additionValues(triangleList.get(k).getValue(), triangleList.get(k).getValue());
-							//triangleList.get(k).setValue(valueTriangle2);
 							//triangleList.get(k).setValue(valueTriangle2);
 						}
 				}

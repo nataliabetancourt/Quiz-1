@@ -89,6 +89,8 @@ public class Triangle {
 	public void setStopMove(boolean stopMove) {
 		this.stopMove = stopMove;
 	}
-	
 
+	public int getSides() {
+		return sides;
+	}
 }

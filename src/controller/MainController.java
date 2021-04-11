@@ -23,12 +23,9 @@ public class MainController {
 	}
 	
 	public void stopMove() {
-		
-
-	}
-	
-	public void distShapes() {
-		
+		logic.stopMoveCircle();
+		logic.stopMoveSquare();
+		logic.stopMoveTriangle();
 
 	}
 	

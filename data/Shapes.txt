@@ -1,5 +1,5 @@
 Cuadrado 50 400 30 -1 5
-Circulo 80 300 40 1 8
+Circulo 80 500 40 1 8
 Cuadrado 70 350 50 1 9
 Circulo 50 100 400 -1 10
 Circulo 60 550 500 1 4

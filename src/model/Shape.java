@@ -52,6 +52,10 @@ public class Shape {
 			}
 		}
 	}
+	
+	public int getSize() {
+		return size;
+	}
 
 	public int getPosX() {
 		return posX;

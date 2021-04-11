@@ -1,4 +1,5 @@
 package view;
+
 import controller.MainController;
 import processing.core.PApplet;
 
@@ -13,13 +14,14 @@ public class Main extends PApplet{
 	@Override
 	public void settings() {
 		size(600, 600);
-		
+
 	}
 	
 	@Override
 	public void setup() {
 		
 		controller = new MainController(this);
+	
 	}
 	
 	@Override
@@ -28,12 +30,12 @@ public class Main extends PApplet{
 		
 		controller.draw();
 		
-		
 	}
 	
 	@Override
 	public void mousePressed() {
-	
+		if (mouseButton == LEFT) {
+			controller.stopMove();
+		}
 	}
-
 }

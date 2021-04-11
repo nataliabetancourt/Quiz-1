@@ -1,10 +1,7 @@
 package model;
 
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import processing.core.PApplet;
-import processing.core.PConstants;
 
 public class Logic {
 	
@@ -48,18 +45,15 @@ public class Logic {
 	public void draw() {
 		//Drawing the shapes from the list of objects
 		for (int i = 0; i < squareList.size(); i++) {
-			squareList.get(i).draw();
-			squareList.get(i).move();
+			squareList.get(i).draw(app);
 		}
 		
 		for (int i = 0; i < circleList.size(); i++) {
-			circleList.get(i).draw();
-			circleList.get(i).move();
+			circleList.get(i).draw(app);
 		}
 		
 		for (int i = 0; i < triangleList.size(); i++) {
 			triangleList.get(i).draw();
-			triangleList.get(i).move();
 		}
 		
 		distShapes();
@@ -136,6 +130,21 @@ public class Logic {
 	
 	public void newShape() {
 		
+		//Random number to choose which shape to create
+		int shapeChooser = (int) (Math.random()*2+1);
+		Square square = new Square();
+		Circle circle = new Circle();
+		
+		switch (shapeChooser) {
+		case 1:
+			squareList.add(square);
+			break;
+		case 2:
+			circleList.add(circle);
+			break;
+		default:
+			break;
+		}
 
 	}
 	

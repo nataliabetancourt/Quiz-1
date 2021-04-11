@@ -1,6 +1,7 @@
 package model;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 public class Circle extends Shape{
 	
@@ -29,15 +30,20 @@ public class Circle extends Shape{
 		}
 	}
 	
-	public void draw() {
-		super.draw();
+	public Circle() {
+		super();
+	}
+	
+	public void draw(PApplet app) {
+		super.draw(app);
 		app.ellipse(posX, posY, size, size);
 		app.fill(80);
 		app.text(value, posX, posY+5);
+		move();
 		
 	}
 	
-	public void move() {
+	protected void move() {
 		super.move();
 		
 	}

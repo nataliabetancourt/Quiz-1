@@ -25,20 +25,37 @@ public class Shape {
 		speed = (int)(Math.random()*4+1);
 	}
 	
+	public Shape() {
+		//Random values for the variables (for right click)
+		this.size = (int) (Math.random()*80+20);
+		this.posX = (int) (Math.random()*580+20);
+		this.posY = (int) (Math.random()*580+20);
+		this.dir1 = (int) (Math.random()*1-1);
+		this.dir2 = (int) (Math.random()*1-1);
+		this.value = (int) (Math.random()*20+1);
+		
+		//Variables for the color
+		r = (int) (Math.random()*255+50);
+		b = (int) (Math.random()*255+50);
+		g = (int) (Math.random()*255+50);
+		
+		//Random speed for the shapes
+		speed = (int)(Math.random()*4+1);
+	}
+	
 	public void separateVariables() {
 
 	}
 
-	public void draw() {
+	public void draw(PApplet app) {
 		app.fill(r, g, b);
 		app.stroke(80);
 		app.strokeWeight(2);
 		app.textAlign(PConstants.CENTER);
 		app.textSize(16);
-		
 	}
 	
-	public void move() {
+	protected void move() {
 		if (stopMove) {
 			posX += (speed * dir1);
 			posY += (speed * dir2);

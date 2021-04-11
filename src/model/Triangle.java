@@ -36,10 +36,11 @@ public class Triangle {
 		app.textSize(16);
 		app.fill(80);
 		app.text(value, posX, posY+8);
+		move();
 		
 	}
 	
-	public void move() {
+	private void move() {
 		if (stopMove) {
 			posX += (speed * dir1);
 			posY += (speed * dir2);

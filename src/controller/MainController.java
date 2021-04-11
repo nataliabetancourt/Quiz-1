@@ -30,7 +30,7 @@ public class MainController {
 	}
 	
 	public void newShape() {
-		
+		logic.newShape();
 
 	}
 

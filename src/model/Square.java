@@ -29,15 +29,20 @@ public class Square extends Shape{
 		}
 	}
 	
-	public void draw() {
-		super.draw();
+	public Square() {
+		super();
+	}
+	
+	public void draw(PApplet app) {
+		super.draw(app);
 		app.rectMode(PConstants.CENTER);
 		app.rect(posX, posY, size, size);
 		app.fill(80);
 		app.text(value, posX, posY+5);
+		move();
 	}
 	
-	public void move() {
+	protected void move() {
 		super.move();
 		
 	}

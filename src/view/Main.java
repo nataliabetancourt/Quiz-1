@@ -36,6 +36,10 @@ public class Main extends PApplet{
 	public void mousePressed() {
 		if (mouseButton == LEFT) {
 			controller.stopMove();
+		} 
+		
+		if (mouseButton == RIGHT) {
+			controller.newShape();
 		}
 	}
 }

@@ -14,7 +14,7 @@ public class Square extends Shape{
 		separateVariables();
 	}
 	
-	protected void separateVariables() {
+	public void separateVariables() {
 		//Splitting String into array
 		squareVariables = app.split(shapes, " ");
 		

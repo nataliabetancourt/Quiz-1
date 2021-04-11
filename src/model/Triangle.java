@@ -3,38 +3,39 @@ package model;
 import processing.core.PApplet;
 import processing.core.PConstants;
 
-public class Shape {
+public class Triangle {
 	
-	protected PApplet app;
-	protected String shapes;
-	protected int size, posX, posY, dir1, dir2, value, speed;
-	protected int r, g, b;
-	protected boolean stopMove;
+	private PApplet app;
+	private int sides, posX, posY, dir1, dir2, value, speed;
+	private int r, g, b;
+	private boolean stopMove;
 	
-	public Shape(PApplet app, String shapes) {
+	public Triangle(PApplet app, int posX, int posY, int dir1, int dir2, int value, int speed) {
 		this.app = app;
-		this.shapes = shapes;
+		this.posX = posX;
+		this.posY = posY;
+		this.dir1 = dir1;
+		this.dir2 = dir2;
+		this.value = value;
+		this.speed = speed;
+		this.sides = (int) (Math.random()*35+25);
 		this.stopMove = true;
 		
 		//Variables for the color
 		r = (int) (Math.random()*255+50);
 		b = (int) (Math.random()*255+50);
 		g = (int) (Math.random()*255+50);
-		
-		//Random speed for the shapes
-		speed = (int)(Math.random()*4+1);
 	}
 	
-	public void separateVariables() {
-
-	}
-
 	public void draw() {
 		app.fill(r, g, b);
 		app.stroke(80);
 		app.strokeWeight(2);
+		app.triangle(posX-sides, posY+sides, posX, posY-sides, posX+sides, posY+sides);
 		app.textAlign(PConstants.CENTER);
 		app.textSize(16);
+		app.fill(80);
+		app.text(value, posX, posY+8);
 		
 	}
 	
@@ -88,4 +89,6 @@ public class Shape {
 	public void setStopMove(boolean stopMove) {
 		this.stopMove = stopMove;
 	}
+	
+
 }

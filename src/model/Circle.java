@@ -14,7 +14,7 @@ public class Circle extends Shape{
 
 	}
 	
-	protected void separateVariables() {
+	public void separateVariables() {
 		//Splitting String into array
 		circleVariables = app.split(shapes, " ");
 		

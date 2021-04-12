@@ -45,7 +45,7 @@ public class Triangle {
 			posX += (speed * dir1);
 			posY += (speed * dir2);
 			
-			if (posX < 0 || posX > 600) {
+			if (posX < 0 || posX > 800) {
 				dir1 = dir1*(-1);
 			}
 			

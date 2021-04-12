@@ -11,7 +11,7 @@ public class Square extends Shape{
 		super(app, shapes);
 		
 		//Separating the String received into an array to get each variable
-		separateVariables();
+		//separateVariables();
 	}
 	
 	public void separateVariables() {
@@ -40,11 +40,6 @@ public class Square extends Shape{
 		app.fill(80);
 		app.text(value, posX, posY+5);
 		move();
-	}
-	
-	protected void move() {
-		super.move();
-		
 	}
 
 }

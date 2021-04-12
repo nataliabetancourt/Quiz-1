@@ -10,11 +10,13 @@ public class Logic {
 	private ArrayList<Square> squareList;
 	private ArrayList<Circle> circleList;
 	private ArrayList<Triangle> triangleList;
-	private boolean crash;
+	private boolean crash1, crash2, crash3;
 	
 	public Logic(PApplet app) {
 		this.app = app;
-		this.crash = false;
+		this.crash1 = false;
+		this.crash2 = false;
+		this.crash3 = false;
 		
 		//Loading TXT
 		shapes = app.loadStrings("./data/Shapes.txt");
@@ -55,8 +57,7 @@ public class Logic {
 		for (int i = 0; i < triangleList.size(); i++) {
 			triangleList.get(i).draw();
 		}
-		
-		distShapes();
+	
 	}
 	
 	public void stopMoveCircle() {
@@ -89,58 +90,119 @@ public class Logic {
 		}
 	}
 	
-	private void distShapes() {
+	public void distShapes() {
 		
+		//Crash between a square and a circle
 		for (int i = 0; i < squareList.size(); i++) {
+			//Square variable
+			Square square = squareList.get(i);
 			for (int j = 0; j < circleList.size(); j++) {
-					
-					//Validating the distance between the basic shapes to add the values and turn the shape into a triangle
-					double distanceSandC = distance(squareList.get(i).getPosX(), circleList.get(j).getPosX(), 
-																			squareList.get(i).getPosY(), circleList.get(j).getPosY());
-						
-					//Crash between a square and a circle
-					if (distanceSandC < circleList.get(j).getSize()) {
-						//Addition of both of the values that crashed
-						int valueTriangle = additionValues(squareList.get(i).getValue(), circleList.get(j).getValue());
-						//Adding triangle as a result of the crash
-						triangleList.add(new Triangle(app, squareList.get(i).getPosX(), squareList.get(i).getPosY(), 
-																			squareList.get(i).getDir1(), squareList.get(i).getDir2(),
-																			valueTriangle, squareList.get(i).getSpeed()));
-						//Removing the shapes that crashed
-						squareList.remove(i);
-						circleList.remove(j);
-						crash = true;
-					}
-					
-					
-					for (int k = 0; k < triangleList.size(); k++) {
-						//Validating the distance between two triangles to add the values
-						double distanceTandT = distance(triangleList.get(k).getPosX(), triangleList.get(k).getPosX(), 
-																		triangleList.get(k).getPosY(), triangleList.get(k).getPosY());
-						//Crash between two triangles
-						if (distanceTandT < 50 && crash == true) {
-							//Addition of both of the values of the crash
-							int valueTriangle2 = additionValues(triangleList.get(k).getValue(), triangleList.get(k).getValue());
-							//triangleList.get(k).setValue(valueTriangle2);
+					//Circle variable
+					Circle circle = circleList.get(j);
+				
+					//Distance between shapes
+					if (app.dist(square.getPosX(), square.getPosY(), circle.getPosX(), circle.getPosY())<circle.getSize()/2) {
+						crash1 = true;
+						if (crash1) {
+							//Addition of both of the values that crashed
+							int valueTriangle = additionValues(square.getValue(), circle.getValue());
+							//Adding triangle as a result of the crash
+							triangleList.add(new Triangle(app, square.getPosX(), square.getPosY(), square.getDir1(), 
+																		square.getDir2(), valueTriangle, square.getSpeed()));
+							//Removing the shapes that crashed
+							squareList.remove(square);
+							circleList.remove(circle);
+							crash1 = false;
 						}
 				}
-			}	
+			}
 		}
+		
+		//Crash between a square and a square
+		for (int i = 0; i < squareList.size(); i++) {
+			//Variable for the first squares
+			Square square1 = squareList.get(i);
+			for (int j = 0; j < squareList.size(); j++) {
+				//Variable for the second squares
+				Square square2 = squareList.get(j);
+				
+				//Determine which square is bigger
+				int bigSquare = 0;
+				if (square1.getSize() > square2.getSize()) {
+					bigSquare = square1.getSize();
+				}
+				
+				if (square1.getSize() < square2.getSize()) {
+					bigSquare = square2.getSize();
+				}
+				
+				//Distance between shapes
+				if (app.dist(square1.getPosX(), square1.getPosY(), square2.getPosX(), square2.getPosY()) < bigSquare/2) {
+					crash2 = true;
+					if (crash2) {
+						//Addition of both of the values that crashed
+						int valueTriangle2 = additionValues(square1.getValue(), square2.getValue());
+						//Adding triangle as a result of the crash
+						triangleList.add(new Triangle(app, square1.getPosX(), square1.getPosY(), square1.getDir1(), 
+																	square1.getDir2(), valueTriangle2, square1.getSpeed()));
+						//Removing the shapes that crashed
+						squareList.remove(square1);
+						squareList.remove(square2);
+						crash2 = false;
+					}
+				}
+			}
+		}
+
+		//Crash between a circle and a circle
+		for (int i = 0; i < circleList.size(); i++) {
+			//Variable for the first circles
+			Circle circle1 = circleList.get(i);
+			for (int j = 0; j < circleList.size(); j++) {
+				//Variable for the second squares
+				Circle circle2 = circleList.get(j);
+				
+				//Determine which circle is bigger
+				int bigCircle = 0;
+				if (circle1.getSize() > circle2.getSize()) {
+					bigCircle = circle1.getSize();
+				}
+				
+				if (circle1.getSize() < circle2.getSize()) {
+					bigCircle = circle2.getSize();
+				}
+				
+				//Distance between shapes
+				if (app.dist(circle1.getPosX(), circle1.getPosY(), circle2.getPosX(),circle2.getPosY())< bigCircle/2) {
+					crash3 = true;
+					if (crash3) {
+						//Addition of both of the values that crashed
+						int valueTriangle3 = additionValues(circle1.getValue(), circle2.getValue());
+						//Adding triangle as a result of the crash
+						triangleList.add(new Triangle(app, circle1.getPosX(), circle1.getPosY(), circle1.getDir1(), 
+																	circle1.getDir2(), valueTriangle3, circle1.getSpeed()));
+						//Removing the shapes that crashed
+						circleList.remove(circle1);
+						circleList.remove(circle2);
+						crash3 = false;
+					}
+				}
+			}
+		}
+
 	}
 	
 	public void newShape() {
 		
 		//Random number to choose which shape to create
 		int shapeChooser = (int) (Math.random()*2+1);
-		Square square = new Square();
-		Circle circle = new Circle();
 		
 		switch (shapeChooser) {
 		case 1:
-			squareList.add(square);
+			squareList.add(new Square());
 			break;
 		case 2:
-			circleList.add(circle);
+			circleList.add(new Circle());
 			break;
 		default:
 			break;

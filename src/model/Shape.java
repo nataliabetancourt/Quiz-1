@@ -23,9 +23,24 @@ public class Shape {
 		
 		//Random speed for the shapes
 		speed = (int)(Math.random()*4+1);
+		
+		//Splitting String into array
+		String [] shapeVariables = app.split(shapes, " ");
+		
+		//Going through the array and turning the strings into numbers, for the values of the variables (based on position)
+		for (int i = 0; i < shapeVariables.length; i++) {
+			size = Integer.parseInt(shapeVariables[1]);
+			posX = Integer.parseInt(shapeVariables[2]);
+			posY = Integer.parseInt(shapeVariables[3]);
+			dir1 = Integer.parseInt(shapeVariables[4]);
+			dir2 = Integer.parseInt(shapeVariables[4]);
+			value = Integer.parseInt(shapeVariables[5]);
+		}
 	}
 	
 	public Shape() {
+		this.stopMove = true;
+		
 		//Random values for the variables (for right click)
 		this.size = (int) (Math.random()*80+20);
 		this.posX = (int) (Math.random()*580+20);
@@ -53,6 +68,7 @@ public class Shape {
 		app.strokeWeight(2);
 		app.textAlign(PConstants.CENTER);
 		app.textSize(16);
+		move();
 	}
 	
 	protected void move() {
@@ -60,7 +76,7 @@ public class Shape {
 			posX += (speed * dir1);
 			posY += (speed * dir2);
 			
-			if (posX < 0 || posX > 600) {
+			if (posX < 0 || posX > 800) {
 				dir1 = dir1*(-1);
 			}
 			

@@ -45,8 +45,19 @@ public class Shape {
 		this.size = (int) (Math.random()*80+20);
 		this.posX = (int) (Math.random()*580+20);
 		this.posY = (int) (Math.random()*580+20);
-		this.dir1 = (int) (Math.random()*1-1);
-		this.dir2 = (int) (Math.random()*1-1);
+		this.dir1 = (int) (Math.random()*2+0);
+		//Direction for the shapes randomly made
+		if (dir1 == 0) {
+			dir1 = 1;
+		} else {
+			dir1 = -1;
+		}
+		this.dir2 = (int) (Math.random()*2+0);
+		if (dir2 == 0) {
+			dir2 = 1;
+		} else {
+			dir2 = -1;
+		}
 		this.value = (int) (Math.random()*20+1);
 		
 		//Variables for the color

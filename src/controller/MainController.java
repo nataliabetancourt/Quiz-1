@@ -19,7 +19,6 @@ public class MainController {
 	
 	public void draw() {
 		logic.draw();
-		logic.distShapes();
 	}
 	
 	public void stopMove() {

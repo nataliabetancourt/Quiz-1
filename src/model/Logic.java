@@ -57,6 +57,8 @@ public class Logic {
 		for (int i = 0; i < triangleList.size(); i++) {
 			triangleList.get(i).draw();
 		}
+		
+		distShapes();
 	
 	}
 	
@@ -90,7 +92,7 @@ public class Logic {
 		}
 	}
 	
-	public void distShapes() {
+	private void distShapes() {
 		
 		//Crash between a square and a circle
 		for (int i = 0; i < squareList.size(); i++) {
@@ -189,7 +191,6 @@ public class Logic {
 				}
 			}
 		}
-
 	}
 	
 	public void newShape() {
